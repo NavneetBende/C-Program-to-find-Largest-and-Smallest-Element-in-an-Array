@@ -1,0 +1,40 @@
+// C Program to find smallest and largest elements in an array
+// using top down recursive approach
+#include <stdio.h>
+
+// getting smallest here
+void getSmallest(int arr[], int i, int len, int min)
+{
+    // base case, when last element was read in previous recursion 
+    if(i >= len){
+        printf("Smallest: %d\n", min);
+        return;
+    }
+    
+    if(arr[i] < min) 
+        min = arr[i];
+getSmallest(arr, i+1, len, min);
+}
+
+// getting largest here
+void getLargest(int arr[], int i, int len, int max)
+{
+// base case, when last element was read in previous recursion
+if(i >= len)
+{ 
+    printf("Largest: %d", max); 
+    return; 
+    
+} 
+if(arr[i] > max) max = arr[i]; 
+getLargest(arr, i+1, len, max); 
+    
+}
+int main() 
+{ int arr[] = {70, 20, 10, 90, 30, 40, 60}; // get the length of the array 
+int len = sizeof(arr)/sizeof(arr[0]); 
+getSmallest(arr, 0, len, arr[0]); 
+getLargest(arr, 0, len, arr[0]); 
+return 0; 
+    
+} // Time complexity: O(N) // Space complexity: O(1) // Auxilary space complexity : O(N) due to function call stack
